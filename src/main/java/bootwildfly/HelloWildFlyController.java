@@ -26,9 +26,9 @@ public class HelloWildFlyController {
     }
 
     @RequestMapping(value = "/greeting", method = RequestMethod.POST, headers={"Content-type=application/json"})
-    public String greeting(HttpServletRequest request, @RequestBody JsonNode jsonNode) 
+    public @ResponseBody Greeting greeting(HttpServletRequest request, @RequestBody JsonNode jsonNode) 
     {
-    	return "{\"id\":\"A123456789\"}";
+    	return new Greeting(10, "123456789");
     }
 
 }
