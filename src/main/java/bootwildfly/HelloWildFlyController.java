@@ -34,7 +34,8 @@ public class HelloWildFlyController {
     	JsonNode nameNode = jsonNode.get("name");
     	String name = (nameNode == null)? "World": nameNode.asText();
 
-    	return new Greeting(10, "123456789");
+        return new Greeting(counter.incrementAndGet(),
+                            String.format(template, name));
     }
 
 }
