@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class HelloWildFlyController {
 
+    private static final String template = "Hello, %s!";
+    private final AtomicLong counter = new AtomicLong();
+
 
     @RequestMapping("hello")
     public String sayHello(){
@@ -28,6 +31,9 @@ public class HelloWildFlyController {
     @RequestMapping(value = "/greeting", method = RequestMethod.POST, headers={"Content-type=application/json"})
     public @ResponseBody Greeting greeting(HttpServletRequest request, @RequestBody JsonNode jsonNode) 
     {
+    	JsonNode nameNode = jsonNode.get("name");
+    	String name = (nameNode == null)? "World": nameNode.asText();
+
     	return new Greeting(10, "123456789");
     }
 
