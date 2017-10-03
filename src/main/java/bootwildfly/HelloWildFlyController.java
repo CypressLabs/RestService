@@ -24,4 +24,11 @@ public class HelloWildFlyController {
     public String sayHello(){
         return ("Hello, SpringBoot on Wildfly");
     }
+
+    @RequestMapping(value = "/greeting", method = RequestMethod.POST, headers={"Content-type=application/json"})
+    public String greeting(HttpServletRequest request, @RequestBody JsonNode jsonNode) 
+    {
+    	return "{\"id\":\"A123456789\"}";
+    }
+
 }
